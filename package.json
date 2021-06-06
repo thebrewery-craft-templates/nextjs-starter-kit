@@ -1,0 +1,56 @@
+{
+  "name": "craft-nextjs-boilerplate",
+  "version": "1.0.0",
+  "description": "My Development Parse Server with Cloud Code & NextJS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --kill-others 'npm run server'",
+    "server": "VERBOSE=1 nodemon ./index.js",
+    "start": "nodemon ./index.js",
+    "lint": "eslint --cache ./cloud && eslint --cache index.js && eslint --cache ./spec",
+    "lint-fix": "eslint --cache --fix ./cloud && eslint --cache --fix index.js && eslint --cache --fix ./spec",
+    "test": "jasmine",
+    "coverage": "nyc jasmine",
+    "prettier": "prettier --write '{cloud,spec}/{**/*,*}.js' 'index.js'",
+    "watch": "babel-watch index.js",
+    "build": "NODE_ENV=production next build",
+    "postinstall": "if [ \"$install\" != \"1\" ]; then export install=\"1\" && npm run build; fi"
+  },
+  "author": "The Brewery Team",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thebrewery-craft/templates/tree/nextjs-boilerplate"
+  },
+  "bugs": {
+    "url": "https://github.com/thebrewery-craft/templates/tree/nextjs-boilerplate"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.3",
+    "babel-watch": "^7.4.1",
+    "concurrently": "^6.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "5.1.0",
+    "jasmine": "3.7.0",
+    "nodemon": "^2.0.7",
+    "nyc": "15.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "@brewery/parse-job-scheduler": "^1.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "newrelic": "^7.4.0",
+    "parse": "^3.2.0",
+    "parse-dashboard": "^2.1.0",
+    "parse-server": "^4.5.0",
+    "parse-server-email-template-adapter": "^1.0.2"
+  }
+}
