@@ -77,7 +77,7 @@ if (process.env.IS_DEVELOPMENT && !test) {
         apps: [
           {
             serverURL: config.serverURL,
-            graphQLServerURL: config.graphQLServerURL,
+            graphQLServerURL: "http://localhost:1337/graphql",
             appId: config.appId,
             masterKey: config.masterKey,
             appName: "my-dev-parse-server",
