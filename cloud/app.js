@@ -27,7 +27,7 @@ nextJS
 
 /*
  * Exporting of module.exports.app is required.
- * we mount it automaticaly to the Parse Server Deployment.
+ * we mount it automatically to the Parse Server Deployment.
  */
 
 module.exports = app;

@@ -1,22 +1,20 @@
 # Craft Cloud Code & NextJS Boilerplate
 
-> This Cloud Code supports Node.js LTS version, nodemon, Jasmine, ESLint & ES6 modules.
+> This Cloud Code supports Node.js LTS version, Next,js, nodemon, Jasmine, ESLint & ES6 modules.
 
-Please read our blog about writing better Cloud Code - https://docs.thebrewery.app/blog/2021/05/20/better-cloud-code 
+Please read our blog about writing better Cloud Code - https://docs.thebrewery.app/blog/2021/05/20/better-cloud-code
 
 ## The Basics
 
- - **What is Craft** - A fully-managed serverless API development platform with scalable NodeJS Rest & GraphQL API, easy to use CMS, CRUD, Object and File storage, built-in Hosting, User Management, Push Notifications, System Emails, Cloud functions & Jobs, Real-time messages, and more out of the box.
- 
- - **What is Next.js** - A great JavaScript framework that lets you easily build a complete web application with React and server-side rendering. 
- 
- - **What is Cloud Code?** - For complex apps, sometimes you just need a bit of logic that isn’t running on web browser or mobile device. Cloud Code makes this possible. Cloud Code is easy to use because it’s built on the same Parse JavaScript SDK that powers thousands of apps. The only difference is that this code runs in your Parse Server rather than running on the user’s mobile device or web browser. When you update your Cloud Code, it becomes available to all web and mobile environments instantly. You don’t have to wait for a new release of your application. This lets you change app behavior on the fly and add new features faster.
+- **What is Craft** - A fully-managed serverless API development platform with scalable NodeJS Rest & GraphQL API, easy to use CMS, CRUD, Object and File storage, built-in Hosting, User Management, Push Notifications, System Emails, Cloud functions & Jobs, Real-time messages, and more out of the box.
 
+- **What is Next.js** - A great JavaScript framework that lets you easily build a complete web application with React and server-side rendering.
+
+- **What is Cloud Code?** - For complex apps, sometimes you just need a bit of logic that isn’t running on web browser or mobile device. Cloud Code makes this possible. Cloud Code is easy to use because it’s built on the same Parse JavaScript SDK that powers thousands of apps. The only difference is that this code runs in your Parse Server rather than running on the user’s mobile device or web browser. When you update your Cloud Code, it becomes available to all web and mobile environments instantly. You don’t have to wait for a new release of your application. This lets you change app behavior on the fly and add new features faster.
 
 ## How does this work?
 
 The project is developed as a Next.js boilerplate for Craft applications. The platform allows implementation of server-side logic and has a built-in Express, which is directly mounted to the server. We use Express for handling the Next.js and you may find the respective logic at `cloud/app.js`
-
 
 <br/>
 
@@ -74,7 +72,7 @@ This will require you to have **node.js** and **npm** installed on your system. 
 npm install
 -or-
 yarn install
-``` 
+```
 
 ### 3. Open the directory in your favorite Editor/IDE
 
@@ -82,9 +80,9 @@ We highly recommend to use Visual Studio Code.
 
 #### 3.1. Configure your local Parse Server
 
->Please make sure you have PostgreSQL client and server installed on your local machine. You can also install pgadmin4 to manage your database. And create the database that you will use for your local instance. 
+> Please make sure you have PostgreSQL client and server installed on your local machine. You can also install pgadmin4 to manage your database. And create the database that you will use for your local instance.
 
-Make necessary adjusments to your `parse-config.js` if needed. Keep in mind that this configuration will **only** affect your local Parse Server. It will look something like this:
+Make necessary adjustments to your `parse-config.js` if needed. Keep in mind that this configuration will **only** affect your local Parse Server. It will look something like this:
 
 ```javascript
 module.exports = {
@@ -102,7 +100,7 @@ module.exports = {
   cloud: process.env.PARSE_CLOUD_CODE || "./cloud/main.js",
   isDev: process.env.IS_DEVELOPMENT || 1, //this will set some rules for local development
   liveQuery: {
-    classNames: [], // List of classes (from My Apps > Your App > Dasnboard > Browser) to support for query subscriptions example: [ 'User', 'Posts', 'Comments' ]
+    classNames: [], // List of classes (from My Apps > Your App > Dashboard > Browser) to support for query subscriptions example: [ 'User', 'Posts', 'Comments' ]
   },
   verbose: false, // Set the logging to verbose
 };
@@ -175,6 +173,7 @@ Parse Dashboard is a standalone dashboard for managing your Parse Server apps.
 Your app's Parse dashboard is accessible at http://localhost:1337/dashboard
 
 Login credentials:
+
 ```
 username: admin
 password: password
@@ -215,7 +214,7 @@ Parse.Cloud.job("myJob", (request) => {
 });
 ```
 
-Then, go to your app, ```Craft > My Apps > Your App > Dashboard > Jobs > Schedule a Job```
+Then, go to your app, `Craft > My Apps > Your App > Dashboard > Jobs > Schedule a Job`
 , and schedule that job (`myjob`) you have just created.
 
 <br/><br/>
@@ -247,12 +246,10 @@ Free Gitpod access comes with free 50 hours/month access
 
 For more info, please visit gitpod.io
 
-Your Cloud Code repo is gitpod-ready, just type this URL format in your browser: 
+Your Cloud Code repo is gitpod-ready, just type this URL format in your browser:
 
-```https://gitpod.io/#https://your-full-repo-url```
+`https://gitpod.io/#https://your-full-repo-url`
 
 For example:
 
-```https://gitpod.io/#https://gitlab.stratpoint.dev/craft/xxxxx/xxxxx/your-project-name```
-
-
+`https://gitpod.io/#https://gitlab.stratpoint.dev/craft/xxxxx/xxxxx/your-project-name`

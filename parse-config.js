@@ -15,11 +15,16 @@ module.exports = {
   graphQLServerURL:
     process.env.GRAPHQL_SERVER_URL || "http://localhost:1337/graphql",
   javascriptKey: process.env.JAVASCRIPT_KEY || "myJSKey",
-  restAPIKey: process.env.REST_API_KEY || "restAPIKey",
+  restAPIKey: process.env.REST_API_KEY || "myRestAPIKey",
   cloud: process.env.PARSE_CLOUD_CODE || "./cloud/main.js",
-  isDev: process.env.IS_DEVELOPMENT || 1, //this will set some rules for local development
   liveQuery: {
-    classNames: [], // List of classes (from My Apps > Your App > Dasnboard > Browser) to support for query subscriptions example: [ 'User', 'Posts', 'Comments' ]
+    classNames: [], // List of classes (from My Apps > Your App > Dashboard > Browser) to support for query subscriptions example: [ 'User', 'Posts', 'Comments' ]
   },
   verbose: false,
+  filesAdapter: {
+    module: "@parse/fs-files-adapter",
+    options: {
+      encryptionKey: process.env.FILE_ENCRYPTION_KEY || "f1l33ncrypt10nk3y", //optional, but mandatory if you want to encrypt files
+    },
+  },
 };

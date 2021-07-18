@@ -2,7 +2,28 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 
+import Parse1 from "./services/parse";
+
 export default function Home() {
+  const gameScore = new Parse1.Object("GameScore");
+
+  gameScore.set("score", 1337);
+  gameScore.set("playerName", "Sean Plott");
+  gameScore.set("cheatMode", false);
+
+  gameScore.save().then(
+    (gameScore) => {
+      // Execute any logic that should take place after the object is saved.
+      console.log("New object created with objectId: " + gameScore.id);
+    },
+    (error) => {
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
+      console.log(
+        "Failed to create new object, with error code: " + error.message
+      );
+    }
+  );
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +34,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.grid}>
-          <img src="/craft.png" width="222" />
+          <Image src="/craft.png" alt="Craft logo" width={222} height={90} />
           <h1
             className={styles.title}
             style={{
@@ -22,7 +43,12 @@ export default function Home() {
               marginTop: "30px",
             }}
           ></h1>
-          <img src="/nextjs.png" width="222" />
+          <Image
+            src="/nextjs.png"
+            alt="Next.js logo"
+            width={222}
+            height={150}
+          />
         </div>
         <h1 className={styles.title}>Welcome to your personal site</h1>
 

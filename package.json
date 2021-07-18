@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently --kill-others 'npm run server'",
-    "server": "VERBOSE=1 nodemon ./index.js",
+    "server": "VERBOSE=1 NODE_ENV=development nodemon ./index.js",
     "start": "nodemon ./index.js",
     "lint": "eslint --cache ./cloud && eslint --cache index.js && eslint --cache ./spec",
     "lint-fix": "eslint --cache --fix ./cloud && eslint --cache --fix index.js && eslint --cache --fix ./spec",
@@ -34,19 +34,20 @@
     "eslint-config-next": "11.0.0",
     "jasmine": "3.7.0",
     "nodemon": "^2.0.7",
-    "nyc": "15.1.0"
+    "nyc": "15.1.0",
+    "parse-dashboard": "^2.1.0"
   },
   "dependencies": {
+    "@brewery/nodemailer-handlebars": "^1.0.6",
     "@brewery/parse-job-scheduler": "^1.0.1",
+    "@parse/fs-files-adapter": "^1.2.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "newrelic": "^7.4.0",
     "next": "latest",
     "parse": "^3.2.0",
-    "parse-dashboard": "^2.1.0",
     "parse-server": "^4.5.0",
-    "parse-server-email-template-adapter": "^1.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
