@@ -1,4 +1,5 @@
-Welcome
+## Craft & Next.js Starter Kit
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). With Parse API integration and Tailwind CSS.
 
 ## The Basics
