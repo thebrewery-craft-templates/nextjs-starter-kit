@@ -1,54 +1,26 @@
 {
-  "name": "craft-nextjs-boilerplate",
-  "version": "1.0.0",
-  "description": "My Development Parse Server with Cloud Code & NextJS",
-  "main": "index.js",
+  "name": "my-nextjs-starter-kit",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others 'npm run server'",
-    "server": "VERBOSE=1 NODE_ENV=development nodemon ./index.js",
-    "start": "nodemon ./index.js",
-    "lint": "eslint --cache ./cloud && eslint --cache index.js && eslint --cache ./spec",
-    "lint-fix": "eslint --cache --fix ./cloud && eslint --cache --fix index.js && eslint --cache --fix ./spec",
-    "test": "jasmine",
-    "coverage": "nyc jasmine",
-    "prettier": "prettier --write '{cloud,spec}/{**/*,*}.js' 'index.js'",
-    "watch": "babel-watch index.js",
-    "build": "NODE_ENV=production next build",
-    "postinstall": "if [ \"$install\" != \"1\" ]; then export install=\"1\" && npm run build; fi"
-  },
-  "author": "The Brewery Team",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thebrewery-craft/templates/tree/nextjs-boilerplate"
-  },
-  "bugs": {
-    "url": "https://github.com/thebrewery-craft/templates/tree/nextjs-boilerplate"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/eslint-parser": "^7.14.3",
-    "babel-watch": "^7.4.1",
-    "concurrently": "^6.1.0",
-    "eslint": "^7.28.0",
-    "eslint-config-next": "11.0.0",
-    "jasmine": "3.7.0",
-    "nodemon": "^2.0.7",
-    "nyc": "15.1.0",
-    "parse-dashboard": "^2.1.0"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@brewery/nodemailer-handlebars": "^1.0.6",
-    "@brewery/parse-job-scheduler": "^1.0.1",
-    "@parse/fs-files-adapter": "^1.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^9.0.2",
-    "express": "^4.17.1",
-    "newrelic": "^7.4.0",
-    "next": "latest",
-    "parse": "^3.2.0",
-    "parse-server": "^4.5.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "next": "11.0.1",
+    "parse": "^3.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "eslint": "7.30.0",
+    "eslint-config-next": "11.0.1",
+    "postcss": "^8.3.5",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "tailwindcss": "^2.2.4"
   }
 }
