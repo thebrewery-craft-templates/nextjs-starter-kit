@@ -10,7 +10,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, configure your Next.js to work with Craft's built-in backend API, edit `next.config.js` and paste the needed credentials. You can get the credentials from Craft Settings (https://craft.thebrewery.app/apps) page.
+First, configure your Next.js to work with Craft's built-in backend API by editing `next.config.js` and paste the needed credentials. You can get the credentials from Craft Settings (https://craft.thebrewery.app/apps) page.
 
 ```
 ...
