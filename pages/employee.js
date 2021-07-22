@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import Parse from "./api/parse";
 
 export default function Employee() {
@@ -8,13 +9,26 @@ export default function Employee() {
 
   const [employees, setEmployees] = useState([]);
 
-  const createEmployee = () => {
+  // prevent submitting invalid or empty emails
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    createEmployee(data);
+    reset();
+  };
+
+  const createEmployee = (data) => {
     const employee = new Parse.Object("Employee");
     employee
       .save({
-        username: employeeName,
-        email: employeeEmail,
-        password: employeePassword,
+        username: data.name,
+        email: data.email,
+        password: data.password,
       })
       .then(function (response) {
         setEmployeeName("");
@@ -39,57 +53,72 @@ export default function Employee() {
       name: employee.get("username"),
     }));
 
+    if (employees.length === 0) {
+      alert("No records found.");
+    }
     setEmployees(employees);
   };
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      <section className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <h2 className="text-5xl mt-2 mb-6 leading-tight font-semibold font-heading">
-          Create an Employee{" "}
-        </h2>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Employee Name
-          </label>
-          <input
-            className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-            placeholder="name"
-            onChange={(e) => setEmployeeName(e.target.value)}
-            value={employeeName}
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Employee Email
-          </label>
-          <input
-            className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-            placeholder="email"
-            onChange={(e) => setEmployeeEmail(e.target.value)}
-            value={employeeEmail}
-            type="email"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Employee Password
-          </label>
-          <input
-            className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-            placeholder="password"
-            onChange={(e) => setEmployeePassword(e.target.value)}
-            value={employeePassword}
-            type="password"
-          />
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <section className="relative py-3 sm:max-w-xl sm:mx-auto">
+          <h2 className="text-5xl mt-2 mb-6 leading-tight font-semibold font-heading">
+            Create an Employee{" "}
+          </h2>
+          <div className="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Employee Name
+            </label>
+            <input
+              id="name"
+              className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+              placeholder="name"
+              aria-invalid={errors.empName ? "true" : "false"}
+              {...register("name", { required: true })}
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Employee Email
+            </label>
+            <input
+              className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+              placeholder="email"
+              type="email"
+              id="email"
+              {...register("email", {
+                required: "required",
+                pattern: { value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ },
+              })}
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Employee Password
+            </label>
+            <input
+              className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+              placeholder="password"
+              type="password"
+              {...register("password", { required: "required" })}
+            />
+          </div>
 
-        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-          <button
-            className="inline-block py-4 px-8 mr-6 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow"
-            onClick={createEmployee}
-          >
-            create employee
-          </button>
+          <div className="flex items-center justify-center py-1 sm:max-w-xl sm:mx-auto">
+            <button
+              className="inline-block align-middle py-4 px-8 mr-6 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow"
+              type="submit"
+            >
+              create employee
+            </button>
+          </div>
+        </section>
+      </form>
+      <section className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="relative py-1 sm:max-w-xl sm:mx-auto">
           <button
             className="inline-block py-4 px-8 mr-6 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow"
             onClick={getEmployees}

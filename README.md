@@ -1,5 +1,5 @@
 Welcome
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). With Parse API integration and Tailwind CSS.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). With Parse SDK integration and Tailwind CSS.
 
 ## The Basics
 
@@ -9,15 +9,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, configure your Next.js to work with Craft's built-in backend API, edit `next.config.js` and paste the needed credentials. You can get the credentials from Craft Settings (https://craft.thebrewery.app/apps) page.
+First, configure your Next.js to work with Craft's built-in backend API, edit `next.config.js` and paste the needed credentials. You can get the credentials from Craft Settings (https://craft.thebrewery.app/apps) page. You could use `.env.local` as well.
 
 ```
 ...
 env: {
-    PARSE_APP_ID: "xxx",
-    PARSE_JS_KEY:
+    NEXT_PUBLIC_PARSE_APPLICATION_ID: "xxx",
+    NEXT_PUBLIC_PARSE_JAVASCRIPT_KEY:
       "xxx",
-    PARSE_SERVER_URL:
+    NEXT_PUBLIC_PARSE_SERVER_URL:
       "xxx",
   },
 ```
